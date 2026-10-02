@@ -1,0 +1,1101 @@
+/* Registration page: same design as the published preview.
+   All classes are rg- prefixed so they never clash with the landing page CSS. */
+
+.rg-root * {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.rg-root {
+  --t: #0a8f9c;
+  --t2: #1a9fb8;
+  --g: #d9d9d9;
+  --ink: #222;
+  --mx: 0;
+  --my: 0;
+}
+
+.rg-root {
+  font-family: "Nunito", system-ui, sans-serif;
+  color: #555;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.rg-bgfx {
+  position: fixed;
+  inset: -5%;
+  z-index: -2;
+  background: url(/images/register-bg.jpg) center bottom / cover no-repeat;
+  transform: translate(
+    calc(var(--mx) * -16px),
+    calc(var(--my) * -10px)
+  );
+  transition: transform 0.25s ease-out;
+}
+
+.rg-fade {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    #fff 0,
+    rgba(255, 255, 255, 0.8) 70px,
+    rgba(255, 255, 255, 0) 340px
+  );
+}
+
+.rg-page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 56px 20px 60px;
+}
+
+.rg-head {
+  padding-left: 130px;
+  margin-bottom: 26px;
+  animation: rise 0.6s ease both;
+}
+
+.rg-head small {
+  display: block;
+  color: #777;
+  font-size: 14px;
+}
+
+.rg-head h1 {
+  color: #fff;
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 600;
+  line-height: 1.2;
+  text-shadow: 0 2px 14px rgba(0, 80, 120, 0.25);
+}
+
+.rg-head u {
+  text-decoration: underline wavy #fff;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+.rg-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 270px;
+  gap: 40px;
+  background: #fff;
+  border-radius: 26px;
+  padding: 16px;
+  box-shadow: 0 24px 70px rgba(0, 50, 90, 0.28);
+  animation: rise 0.6s 0.1s ease both;
+  position: relative;
+  overflow: hidden;
+}
+
+.rg-fc {
+  position: relative;
+  padding: 46px 60px 44px;
+}
+
+.rg-corner {
+  position: absolute;
+  opacity: 0.9;
+}
+
+.rg-tl {
+  top: 14px;
+  left: 14px;
+}
+
+.rg-tr {
+  top: 14px;
+  right: 14px;
+  transform: scaleX(-1);
+}
+
+.rg-bl {
+  bottom: 14px;
+  left: 14px;
+  transform: scaleY(-1);
+}
+
+.rg-br {
+  bottom: 14px;
+  right: 14px;
+  transform: scale(-1);
+}
+
+/* STEPPER */
+
+.rg-stp {
+  display: flex;
+  align-items: center;
+  margin: 0 0 34px;
+}
+
+.rg-stp .rg-s {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 0;
+  background: #e6e6e6;
+  color: #888;
+  font: 600 13px "Nunito";
+  display: grid;
+  place-items: center;
+  cursor: default;
+  flex: none;
+  transition: 0.25s;
+}
+
+.rg-stp .rg-s.rg-v {
+  background: #bfe6ec;
+  color: #0a6f7a;
+  cursor: pointer;
+}
+
+.rg-stp .rg-s.rg-v:hover {
+  transform: scale(1.15);
+}
+
+.rg-stp .rg-s.rg-d {
+  background: var(--t);
+  color: #fff;
+}
+
+.rg-stp .rg-s.rg-c {
+  background: var(--t2);
+  color: #fff;
+  box-shadow: 0 0 0 4px rgba(26, 159, 184, 0.22);
+}
+
+.rg-stp .rg-l {
+  flex: 1;
+  height: 3px;
+  background: #e6e6e6;
+  margin: 0 8px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.rg-stp .rg-l i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--t);
+  transition: width 0.4s;
+}
+
+.rg-stp .rg-l.rg-f i {
+  width: 100%;
+}
+
+/* HEADINGS */
+
+.rg-root h2 {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 26px;
+}
+
+/* PANELS */
+
+.rg-panel {
+  animation: inR 0.35s ease;
+}
+
+.rg-panel.rg-L {
+  animation-name: inL;
+}
+
+@keyframes inR {
+  from {
+    opacity: 0;
+    transform: translateX(26px);
+  }
+}
+
+@keyframes inL {
+  from {
+    opacity: 0;
+    transform: translateX(-26px);
+  }
+}
+
+.rg-panel.rg-shake {
+  animation: shake 0.38s;
+}
+
+@keyframes shake {
+  25% {
+    transform: translateX(-8px);
+  }
+
+  50% {
+    transform: translateX(8px);
+  }
+
+  75% {
+    transform: translateX(-4px);
+  }
+}
+
+/* FORM GRID */
+
+.rg-g {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 22px;
+}
+
+.rg-full {
+  grid-column: 1 / -1;
+}
+
+.rg-field {
+  display: block;
+}
+
+.rg-field > span {
+  display: block;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 9px;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.rg-field:focus-within > span {
+  color: var(--t);
+}
+
+/* INPUTS */
+
+.rg-root input:not([type="file"]) {
+  width: 100%;
+  height: 46px;
+  border: 2px solid transparent;
+  border-radius: 13px;
+  background: var(--g);
+  padding: 0 16px;
+  font: inherit;
+  font-size: 15px;
+  color: #222;
+  outline: none;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.rg-root input:hover {
+  background: #d1d1d1;
+}
+
+.rg-root input:focus {
+  background: #f0f4f5;
+  border-color: var(--t2);
+  box-shadow: 0 0 0 4px rgba(26, 159, 184, 0.15);
+}
+
+.rg-root input.rg-ok {
+  padding-right: 40px;
+  background: var(--g)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.2 3L13 4.5' fill='none' stroke='%231fbfa6' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    right 14px center / 16px no-repeat;
+}
+
+.rg-root input.rg-bad,
+.rg-bad {
+  border-color: #d9534f !important;
+  box-shadow: 0 0 0 4px rgba(217, 83, 79, 0.15);
+}
+
+/* SRM */
+
+.rg-srm {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.rg-srm input {
+  flex: 0 0 52%;
+}
+
+.rg-srm em {
+  font-style: normal;
+  font-size: 14px;
+  color: #777;
+}
+
+/* YEAR SELECTOR */
+
+.rg-seg {
+  display: flex;
+  gap: 6px;
+  background: var(--g);
+  padding: 4px;
+  border-radius: 14px;
+  border: 2px solid transparent;
+  max-width: 360px;
+}
+
+.rg-seg button {
+  flex: 1;
+  font: 600 14px "Nunito";
+  border: 0;
+  background: none;
+  border-radius: 9px;
+  height: 36px;
+  color: #555;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.rg-seg button:hover {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+/* FIX: YEAR SELECTED STATE */
+
+.rg-seg button.rg-on {
+  background: #fff;
+  color: var(--t);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* TEAM SIZE */
+
+.rg-sizes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: 360px;
+}
+
+.rg-sz {
+  border: 2px solid transparent;
+  background: var(--g);
+  border-radius: 16px;
+  padding: 16px 10px;
+  font: 600 14px "Nunito";
+  color: #555;
+  cursor: pointer;
+  transition:
+    0.2s,
+    box-shadow 0.2s;
+  text-align: center;
+}
+
+.rg-sz b {
+  display: block;
+  font-size: 30px;
+  line-height: 1.1;
+  color: #333;
+  margin-bottom: 2px;
+}
+
+.rg-sz:hover {
+  transform: translateY(-3px);
+  background: #cfe9ee;
+}
+
+/* FIX: TEAM SIZE SELECTED STATE */
+
+.rg-sz.rg-on {
+  background: var(--t2);
+  color: #fff;
+  border-color: var(--t2);
+  box-shadow: 0 4px 12px rgba(26, 159, 184, 0.25);
+}
+
+.rg-sz.rg-on b {
+  color: #fff;
+}
+
+/* HINT */
+
+.rg-hint {
+  font-size: 12.5px;
+  color: var(--t);
+  animation: rise 0.3s;
+  margin: -6px 0 0;
+}
+
+/* SUBHEADING */
+
+.rg-sub {
+  font-size: 15px;
+  font-weight: 700;
+  color: #333;
+  margin: 34px 0 6px;
+  padding-top: 26px;
+  border-top: 1px solid #eee;
+}
+
+/* REVIEW */
+
+.rg-review {
+  display: grid;
+  gap: 14px;
+}
+
+.rg-rbox {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  background: #f3f6f7;
+  border-radius: 16px;
+  padding: 16px 18px;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.rg-rbox:hover {
+  background: #e7f1f3;
+  transform: translateX(3px);
+}
+
+.rg-av {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--t2),
+    #1fbfa6
+  );
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  flex: none;
+}
+
+.rg-rbox div {
+  flex: 1;
+  min-width: 0;
+}
+
+.rg-rbox b {
+  display: block;
+  color: #222;
+}
+
+.rg-rbox span {
+  display: block;
+  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rg-rbox button {
+  font: 600 12px "Nunito";
+  background: none;
+  border: 0;
+  color: #1a8fc2;
+  cursor: pointer;
+}
+
+/* PAYMENT */
+
+.rg-pay {
+  display: grid;
+  grid-template-columns: 128px 1fr;
+  gap: 22px;
+  align-items: center;
+  background: #f3f6f7;
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.rg-qrbox {
+  width: 128px;
+  height: 128px;
+  border-radius: 12px;
+  background: repeating-conic-gradient(
+      #d9d9d9 0 25%,
+      #ececec 0 50%
+    )
+    0 0 / 16px 16px;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  color: #555;
+}
+
+.rg-qrbox span {
+  background: #fff;
+  padding: 3px 8px;
+  border-radius: 8px;
+}
+
+.rg-amt {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.rg-upi {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 13px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.rg-copy {
+  font: 600 12px "Nunito";
+  border: 1.5px solid var(--t2);
+  color: var(--t2);
+  background: #fff;
+  border-radius: 9px;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-left: 4px;
+}
+
+.rg-copy:hover {
+  background: var(--t2);
+  color: #fff;
+}
+
+/* FILE UPLOAD */
+
+.rg-drop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 2px dashed #b9b9b9;
+  border-radius: 16px;
+  padding: 18px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #666;
+  transition: 0.2s;
+}
+
+.rg-drop:hover,
+.rg-drop.rg-over {
+  border-color: var(--t2);
+  background: #eaf6f8;
+}
+
+.rg-drop input {
+  display: none;
+}
+
+.rg-drop img {
+  width: 46px;
+  height: 46px;
+  object-fit: cover;
+  border-radius: 9px;
+}
+
+/* DONE */
+
+.rg-done {
+  text-align: center;
+  padding: 26px 0;
+  font-size: 15px;
+}
+
+.rg-tick {
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 12px;
+}
+
+.rg-tick circle {
+  fill: var(--t);
+  animation: pop 0.5s cubic-bezier(0.3, 1.6, 0.5, 1)
+    both;
+  transform-origin: center;
+}
+
+.rg-tick path {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation: draw 0.5s 0.35s ease forwards;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.rg-idp {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  background: #f3f6f7;
+  border-radius: 12px;
+  padding: 8px 14px;
+  margin-top: 10px;
+  font-weight: 700;
+  color: #222;
+  letter-spacing: 0.5px;
+}
+
+/* ERROR */
+
+.rg-err {
+  color: #c0392b;
+  font-size: 13px;
+  min-height: 18px;
+  margin-top: 20px;
+}
+
+/* BUTTONS */
+
+.rg-act {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.rg-btn {
+  font: 700 15px "Nunito";
+  border: 0;
+  border-radius: 14px;
+  height: 48px;
+  padding: 0 30px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.rg-btn.rg-p {
+  background: linear-gradient(
+    135deg,
+    var(--t2),
+    #1fbfa6
+  );
+  color: #fff;
+  margin-left: auto;
+  box-shadow: 0 6px 16px rgba(26, 159, 184, 0.35);
+}
+
+.rg-btn.rg-p:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(26, 159, 184, 0.4);
+}
+
+.rg-btn.rg-p:active {
+  transform: none;
+}
+
+.rg-btn.rg-o {
+  background: #eee;
+  color: #555;
+}
+
+.rg-btn.rg-o:hover {
+  background: #e1e1e1;
+}
+
+/* SIDE PANEL */
+
+.rg-side {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 0;
+}
+
+.rg-nav {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 6px;
+}
+
+.rg-nav button {
+  width: 50px;
+  height: 34px;
+  background: #fff;
+  border: 1px solid #555;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  color: #333;
+  transition: 0.2s;
+}
+
+.rg-nav button:first-child {
+  border-radius: 9px 0 0 9px;
+  border-color: #ccc;
+  color: #999;
+}
+
+.rg-nav button:last-child {
+  border-radius: 0 9px 9px 0;
+}
+
+.rg-nav button:not(:disabled):hover {
+  background: #e6f5f7;
+}
+
+.rg-nav button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.rg-box {
+  flex: 1;
+  background: var(--g);
+  border-radius: 20px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+}
+
+.rg-box h3 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #666;
+  margin-bottom: 18px;
+}
+
+.rg-box ul {
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  display: grid;
+  gap: 16px;
+}
+
+.rg-box li {
+  padding-left: 16px;
+  position: relative;
+  animation: rise 0.4s both;
+}
+
+.rg-box li:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--t2);
+}
+
+.rg-box li:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.rg-box li:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.rg-prog {
+  margin-top: auto;
+  font-size: 12px;
+  color: #777;
+}
+
+.rg-bar {
+  height: 5px;
+  background: #c2c2c2;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.rg-bar i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--t2),
+    #1fbfa6
+  );
+  transition: width 0.5s;
+}
+
+/* CONFETTI */
+
+.rg-cf {
+  position: absolute;
+  top: -14px;
+  width: 8px;
+  height: 12px;
+  border-radius: 2px;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(640px) rotate(600deg);
+    opacity: 0;
+  }
+}
+
+/* GENERAL */
+
+.rg-root {
+  isolation: isolate;
+}
+
+.rg-root button {
+  font-family: inherit;
+}
+
+/* AIRY SPACING */
+
+.rg-page {
+  max-width: 1120px;
+  padding-top: 56px;
+}
+
+.rg-head {
+  margin-bottom: 26px;
+}
+
+.rg-card {
+  gap: 40px;
+  padding: 16px;
+  border-radius: 26px;
+}
+
+.rg-fc {
+  padding: 46px 60px 44px;
+}
+
+.rg-corner {
+  opacity: 0.9;
+}
+
+.rg-stp {
+  margin-bottom: 34px;
+}
+
+.rg-stp .rg-s {
+  width: 32px;
+  height: 32px;
+  font-size: 13px;
+}
+
+.rg-stp .rg-l {
+  margin: 0 8px;
+  height: 3px;
+}
+
+.rg-root h2 {
+  font-size: 19px;
+  margin-bottom: 26px;
+}
+
+.rg-g {
+  gap: 24px 22px;
+}
+
+.rg-field > span {
+  font-size: 14px;
+  margin-bottom: 9px;
+  font-weight: 600;
+  color: #555;
+}
+
+.rg-root input:not([type="file"]) {
+  height: 46px;
+  border-radius: 13px;
+  padding: 0 16px;
+  font-size: 15px;
+}
+
+.rg-root input.rg-ok {
+  padding-right: 40px;
+  background-position: right 14px center;
+}
+
+.rg-srm {
+  gap: 16px;
+}
+
+.rg-seg {
+  padding: 4px;
+  border-radius: 14px;
+  gap: 6px;
+  max-width: 360px;
+}
+
+.rg-seg button {
+  height: 36px;
+  font-size: 14px;
+}
+
+.rg-sizes {
+  gap: 16px;
+  max-width: 360px;
+}
+
+.rg-sz {
+  padding: 16px 10px;
+  border-radius: 16px;
+  font-size: 14px;
+}
+
+.rg-sz b {
+  font-size: 30px;
+  margin-bottom: 2px;
+}
+
+.rg-hint {
+  margin: -6px 0 0;
+}
+
+.rg-sub {
+  font-size: 15px;
+  margin: 34px 0 6px;
+  padding-top: 26px;
+  border-top: 1px solid #eee;
+}
+
+.rg-review {
+  gap: 14px;
+}
+
+.rg-rbox {
+  padding: 16px 18px;
+  border-radius: 16px;
+  gap: 16px;
+}
+
+.rg-av {
+  width: 44px;
+  height: 44px;
+}
+
+.rg-pay {
+  padding: 18px;
+  gap: 22px;
+  border-radius: 18px;
+}
+
+.rg-drop {
+  padding: 18px;
+  border-radius: 16px;
+}
+
+.rg-err {
+  margin-top: 20px;
+}
+
+.rg-act {
+  margin-top: 34px;
+}
+
+.rg-btn {
+  height: 48px;
+  padding: 0 30px;
+  border-radius: 14px;
+  font-size: 15px;
+}
+
+.rg-side {
+  gap: 18px;
+}
+
+.rg-box {
+  padding: 24px 20px;
+  border-radius: 20px;
+}
+
+.rg-box h3 {
+  font-size: 16px;
+  margin-bottom: 18px;
+}
+
+.rg-box ul {
+  gap: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.rg-nav button {
+  height: 34px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 860px) {
+  .rg-card {
+    grid-template-columns: 1fr;
+  }
+
+  .rg-side {
+    order: -1;
+  }
+
+  .rg-box {
+    min-height: 0;
+  }
+
+  .rg-head {
+    padding-left: 4px;
+  }
+
+  .rg-fc {
+    padding: 34px 24px 30px;
+  }
+
+  .rg-g {
+    gap: 20px 16px;
+  }
+
+  .rg-corner {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .rg-g,
+  .rg-sizes,
+  .rg-pay {
+    grid-template-columns: 1fr;
+  }
+
+  .rg-qrbox {
+    margin: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rg-root * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .rg-bgfx {
+    transform: none;
+  }
+}
